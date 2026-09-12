@@ -1,30 +1,50 @@
-# ECOSSISTEMA 15-08 · Docs
+# sas-executar-maestro · transição em revisão
 
-Este repositório opera como camada documental, de handoff e de orquestração do ECOSSISTEMA 15-08.
+## 1. Propósito
+OPERAR: agents, skills, prompts, workflows, plugins, MCP, tools, evals e specialties. Nome atual: `Maestr-Docs`. O nome alvo ainda não foi aplicado.
 
-Todo material deve ser classificado por Folder ID antes de ser registrado.
+## 2. Não é
+Documentação geral de negócio, produto e governança deve passar pela entrada do Governance.
 
-## Fluxo
+## 3. Source of Truth
+Os pacotes operacionais continuam nos caminhos existentes sob 80-tecnologia-plataformas/05-gpt. Os novos diretórios são entradas de navegação; não são cópias concorrentes.
 
-1. Entrada sem classificação -> `00-dropzone/`.
-2. Maestro lê o mapa e o `01-master-index/CENTRAL_CONTROL.csv`.
-3. Maestro triangula contexto, domínios, plugins e skills.
-4. Um único `canonical_home` é escolhido.
-5. Relações cross-domain são links, não cópias.
-6. O resultado recebe proveniência e resumo executivo de no máximo 300 palavras.
+## 4. Relação entre repositórios
+Governance → Blueprints → Ecosystem. Maestro atua transversalmente.
 
-## Áreas
+- [Maestro](https://github.com/Sas-Executar/Maestr-Docs): OPERAR.
+- [Blueprints](https://github.com/Sas-Executar/Executar-app-Blueprint): ESPECIFICAR.
+- [Governance](https://github.com/Sas-Executar/Programa-Sas): GOVERNAR.
+- [Ecosystem](https://github.com/Sas-Executar/next-forge): IMPLEMENTAR + RELEASE.
 
-`00-dropzone` · `01-master-index` · `10-business` · `20-produtos` · `30-editorial-marketing` · `40-comercial-servicos` · `50-portfolio-carreira` · `60-dados` · `70-operacao-governanca` · `80-tecnologia-plataformas` · `90-assets-compartilhados` · `98-private-pointers` · `99-archive` · `500-saas-mvp`.
+## 5. Estrutura
+- `00-manifest/`
+- `10-agents/`
+- `20-skills/`
+- `30-prompts/`
+- `40-workflows/`
+- `50-plugins/`
+- `60-mcp/`
+- `70-tools/`
+- `80-specialties/`
+- `90-evals/`
+- `99-archive/`
 
-## Maestro
+As estruturas anteriores são preservadas durante a transição. Diretórios novos não promovem artefatos a canônicos automaticamente.
 
-Canônico em `80-tecnologia-plataformas/05-gpt/02-agents/maestro/`.
+## 6. Workflow
+Entrada → inventário → trabalho em branch → validação → PR → decisão explícita → merge → atualização dos índices.
 
-Skills Anthropic em `80-tecnologia-plataformas/05-gpt/03-skills/anthropic-knowledge-work-plugins/`.
+## 7. Estados
+`draft ≠ review ≠ approved ≠ implemented ≠ tested ≠ verified ≠ released`. Preservar também pre_approved, accepted e demais estados encontrados. `registered`, `registered_reference`, `registered_from_source` e `registered_analysis` não significam implementação. A classificação de proveniência não altera a classificação das afirmações da fonte.
 
-```bash
-git clone --recurse-submodules https://github.com/Sas-Executar/Docs.git
-cd Docs
-bash 80-tecnologia-plataformas/05-gpt/02-agents/maestro/scripts/bootstrap.sh
-```
+## 8. Contribuição
+Usar migration/*, blueprint/*, wf/*, integration/*, fix/* ou release/*. Branch representa trabalho. main é o estado-alvo canônico após aprovação e integração explícitas. Se main não existir, a branch default observada não comprova aprovação. Não reescrever histórico ou remover fontes durante a migração.
+
+## 9. Traceability
+Origem repo/branch/SHA/path → ID → requisito → AC → target → teste/evidência → release. Campos desconhecidos: GAP; owner desconhecido fica vazio. PROPOSED não é requisito existente.
+
+## 10. Migration status
+PASS_WITH_GAPS: estrutura em revisão, fontes preservadas. Renomeação, absorções, redistribuição e archive pendentes. A cópia documental do Maestro está nos PRs 2–4 do Programa-Sas; verificação de bytes não é aprovação documental.
+
+[README anterior](00-manifest/README_BEFORE_MIGRATION.md) preservado como snapshot de referência com caminhos relativos do contexto original.
